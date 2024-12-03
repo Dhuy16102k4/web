@@ -56,49 +56,29 @@ class ProductController {
     }
 
     add(req, res, next) {
-        const { name, price, description, category, stock } = req.body;
-        console.log("Request Body:", req.body);
-        console.log("Uploaded File Info:", req.file);  // Đảm bảo tệp ảnh có sẵn
-    
-        // Kiểm tra các trường đầu vào và tệp ảnh
+        const { name, price, description, category ,stock} = req.body;
+        console.log({ name, price, description, category ,stock})
         if (!name || !price || !description || !category || !stock || !req.file) {
             return res.status(400).json({ message: 'All fields are required, including the image.' });
         }
-    
+
         Category.findById(category)
             .then(categoryObj => {
-                if (!categoryObj) {
-                    console.log('Invalid category ID.');
-                    return res.status(400).json({ message: 'Invalid category ID.' });
-                }
-    
-                // Tạo đường dẫn đến ảnh (kiểm tra lại logic)
-                const imgPath = path.join('public', 'img', req.file.filename);
-                console.log('Image Path:', imgPath);  // Log đường dẫn tệp ảnh
-    
-                const newProduct = new Product({
-                    name,
-                    price,
-                    description,
-                    stock,
-                    category: categoryObj._id,
-                    img: imgPath
-                });
-    
+                if (!categoryObj) return res.status(400).json({ message: 'Invalid category ID.' });
+
+                const imgPath = path.join('/img', req.file.filename);
+                const newProduct = new Product({ name, price, description, category: categoryObj._id, stock, img: imgPath });
+
                 return newProduct.save();
             })
             .then(savedProduct => {
-                console.log('Product saved:', savedProduct);
                 res.status(201).json({ savedProduct, message: 'Product added successfully!' });
             })
             .catch(error => {
                 console.error('Error adding product:', error);
-                res.status(500).json({ message: 'Failed to add product.', error: error.message });
+                res.status(500).json({ message: 'Failed to add product.' });
             });
     }
-    
-    
-    
 
     update(req, res, next) {
         const productId = req.params.id;
