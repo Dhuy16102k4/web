@@ -42,4 +42,19 @@
     "$date": "2024-11-04T19:38:48.367Z"
   },
   "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674ddc74e284807846a59133"
+  },
+  "username": "duc1",
+  "email": "duc@gmail.com",
+  "password": "$2b$10$loaZgxmelZBSUNxP2H4zGer5Lz.upidr11xX2ZAmil4cTk8JBWXfS",
+  "createdAt": {
+    "$date": "2024-12-02T16:12:36.871Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-02T16:12:36.871Z"
+  },
+  "__v": 0
 }]
