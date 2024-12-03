@@ -26,7 +26,7 @@ const HeaderAdmin = () => {
               </Link>
             </li>
             <li>
-              <Link to="/admin/product" className="navIcon" onClick={() => setMobile(false)}>
+              <Link to="../admin/product" className="navIcon" onClick={() => setMobile(false)}>
                 <InvertColorsOutlinedIcon />
                 Product Manage
               </Link>

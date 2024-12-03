@@ -7,6 +7,7 @@ import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 import Footer from "./components/Footer/Footer";
 import LoginPopup from "./components/LoginPopup/LoginPopup";
 import Admin from "./pages/Admin/Admin"; // Thêm Admin Page nếu cần
+import ProductApp from "./pages/product/ProductApp";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -36,7 +37,7 @@ const App = () => {
         <div className="admin">
           <Routes>
             <Route path="/admin" element={<Admin />} />
-            <Route path="/admin/product" element={<Admin />} />
+            <Route path="/admin/product" element={<ProductApp />} />
           </Routes>
         </div>
       )}
