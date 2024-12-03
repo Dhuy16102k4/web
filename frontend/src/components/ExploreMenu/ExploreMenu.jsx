@@ -1,26 +1,26 @@
-import React from 'react'
-import './ExploreMenu.css'
-import { menu_list } from '../../assets/assets'
+import React from 'react';
+import './ExploreMenu.css';
 
-const ExploreMenu = ({category, setCategory}) => {
+const ExploreMenu = ({ category, setCategory, categories }) => {
   return (
-    <div className='explore-menu' id='explore-menu'>
-        <hr/>
-        <h1>Explore Our Innovations</h1>
-        <p className='explore-menu-text'>Choose Your Next Evolution in Technology - Our Mission: Delivering Innovation, Quality, and Excellence</p>
-        <div className="explore-menu-list">
-            {menu_list.map((item, index)=> {
-                return (    
-                    <div onClick={() => setCategory(prev=>prev===item.menu_name?"All":item.menu_name)} key={index} className='explore-menu-list-item'>
-                        <img className={category===item.menu_name?"active":""} src={item.menu_image} alt="" />
-                        <p>{item.menu_name}</p>
-                    </div>                    
-                )
-            })}
-        </div>
-        <hr/>
+    <div className="explore-menu">
+      <button 
+        onClick={() => setCategory('All')}
+        className={category === 'All' ? 'active' : ''}
+      >
+        All
+      </button>
+      {categories.map((cat) => (
+        <button
+          key={cat._id}
+          onClick={() => setCategory(cat.name)}
+          className={category === cat.name ? 'active' : ''}
+        >
+          {cat.name}
+        </button>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default ExploreMenu
+export default ExploreMenu;

@@ -34,7 +34,7 @@ class LoginController {
                 console.log(process.env.SECRET_KEY);
                 const token = generateToken(user);
                 console.log(token);
-                return res.status(200).json({ message: 'Login successful', redirect: '/product' , token});
+                return res.status(200).json({ message: 'Login successful' , token});
             } else {
                 return res.status(401).json({ message: 'Invalid username or password.' });
             }
